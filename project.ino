@@ -1,9 +1,14 @@
-void setup(){
-//检查配置文件
-//连接WIFI或者开启AP模式
-//配置http服务
-//配置UI
+#include "ConfigParser.h"
+void setup()
+{
+    ConfigParser cfg;
+    if (!cfg.loadConfig())
+        return;
+    Serial.print(cfg.getConfig("ssid"));
+    cfg.setConfig("ssid", "MYWIFI");
+    if (cfg.saveConfig())
+        ;
 }
-void loop(){
-    
+void loop()
+{
 }
